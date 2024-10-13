@@ -25,7 +25,7 @@ class Customer:
         """Get the customer's name."""
         return self.name
 
-    def get_price(self, rental: Rental):
+    def get_price(self, rental: Rental) -> float:
         """Calculate the price for a given rental.
 
         Args:

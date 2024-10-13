@@ -24,6 +24,10 @@ class Customer:
         """Get the customer's name."""
         return self.name
 
+    def get_total_charge(self) -> float:
+        """Calculate the total charge for all rentals."""
+        return sum(rental.get_price() for rental in self.rentals)
+
     def statement(self):
         """Create a statement of rentals for the current period.
 
@@ -49,9 +53,9 @@ class Customer:
                             rental.get_price())
             # Accumulate frequent renter points using rental.rental_points()
             frequent_renter_points += rental.rental_points()
-            # and accumulate activity
-            total_amount += rental.get_price()
 
+        # Call the extracted get_total_charge() method
+        total_amount = self.get_total_charge()
         # footer: summary of charges
         statement += "\n"
         statement += "{:40s}  {:6s} {:6.2f}\n".format(

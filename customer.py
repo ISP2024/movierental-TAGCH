@@ -54,12 +54,10 @@ class Customer:
             # Accumulate frequent renter points using rental.rental_points()
             frequent_renter_points += rental.rental_points()
 
-        # Call the extracted get_total_charge() method
-        total_amount = self.get_total_charge()
         # footer: summary of charges
         statement += "\n"
         statement += "{:40s}  {:6s} {:6.2f}\n".format(
-                       "Total Charges", "", total_amount)
+                       "Total Charges", "", self.get_total_charge())
         statement += "Frequent Renter Points earned: {}\n".format(frequent_renter_points)
 
         return statement

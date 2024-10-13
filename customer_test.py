@@ -50,3 +50,17 @@ class CustomerTest(unittest.TestCase):
         # Total charge should be the sum of all rentals
         total_charge = self.c.get_total_charge()
         self.assertEqual(total_charge, 12.00 + 3.50 + 4.50)  # 20.00
+
+    def test_get_total_renter_points(self):
+        """Test the total renter points calculation for multiple rentals."""
+        # No rentals, total points should be 0
+        self.assertEqual(self.c.get_total_renter_points(), 0)
+
+        # Add rentals and check frequent renter points
+        self.c.add_rental(Rental(self.new_movie, 4))  # New release earns 4 points
+        self.c.add_rental(Rental(self.regular_movie, 3))  # Regular movie earns 1 point
+        self.c.add_rental(Rental(self.childrens_movie, 5))  # Children's movie earns 1 point
+
+        # Total points should be the sum of all rentals
+        total_points = self.c.get_total_renter_points()
+        self.assertEqual(total_points, 4 + 1 + 1)  # 6 points

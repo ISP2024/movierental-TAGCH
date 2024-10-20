@@ -27,9 +27,9 @@ class Rental:
     	return self.days_rented
 
     def get_price(self) -> float:
-        """Delegate price calculation to the movie."""
-        return self.movie.get_price(self.days_rented)
+        """Directly calculate price using PriceStrategy."""
+        return self.movie.price_strategy.get_price(self.days_rented)
 
     def rental_points(self) -> int:
-        """Delegate rental points calculation to the movie."""
-        return self.movie.get_rental_points(self.days_rented)
+        """Directly calculate rental points using PriceStrategy."""
+        return self.movie.price_strategy.get_rental_points(self.days_rented)

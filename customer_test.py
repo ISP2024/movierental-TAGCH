@@ -1,5 +1,5 @@
 import re
-import unittest 
+import unittest
 from customer import Customer
 from rental import Rental
 from movie import Movie, PriceStrategy
@@ -17,12 +17,12 @@ class CustomerTest(unittest.TestCase):
     	self.new_movie = Movie("Mulan", PriceStrategy.NEW_RELEASE)
     	self.regular_movie = Movie("CitizenFour", PriceStrategy.REGULAR)
     	self.childrens_movie = Movie("Frozen", PriceStrategy.CHILDRENS)
-    	
+
     @unittest.skip("No convenient way to test")
-    def test_billing():
+    def test_billing(self):
     	# no convenient way to test billing since its buried in the statement() method.
     	pass
-    
+
     def test_statement(self):
     	stmt = self.c.statement()
     	# get total charges from statement using a regex

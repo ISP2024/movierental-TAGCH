@@ -9,11 +9,11 @@ from customer import Customer
 def make_movies():
     """Some sample movies."""
     movies = [
-        Movie("Air", PriceStrategy.NEW_RELEASE),
-        Movie("Oppenheimer", PriceStrategy.REGULAR),
-        Movie("Frozen", PriceStrategy.CHILDRENS),
-        Movie("Bitconned", PriceStrategy.NEW_RELEASE),
-        Movie("Particle Fever", PriceStrategy.REGULAR)
+        Movie("Air", 2020, {"Drama", "Action"}, PriceStrategy.NEW_RELEASE),
+        Movie("Oppenheimer", 2023, {"Biography", "Drama"}, PriceStrategy.REGULAR),
+        Movie("Frozen", 2013, {"Animation", "Family"}, PriceStrategy.CHILDRENS),
+        Movie("Bitconned", 2021, {"Action", "Thriller"}, PriceStrategy.NEW_RELEASE),
+        Movie("Particle Fever", 2013, {"Documentary"}, PriceStrategy.REGULAR)
     ]
     return movies
 

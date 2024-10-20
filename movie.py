@@ -1,4 +1,6 @@
 from enum import Enum
+from dataclasses import dataclass
+from typing import Collection
 
 class PriceStrategy(Enum):
     REGULAR = 0
@@ -29,19 +31,22 @@ class PriceStrategy(Enum):
         return 1
 
 
+@dataclass(frozen=True)
 class Movie:
-    """
-    A movie available for rent.
-    """
+    """A movie available for rent."""
+    title: str
+    year: int
+    genre: Collection[str]
+    price_strategy: PriceStrategy  # Add this attribute
 
-    def __init__(self, title: str, price_strategy: PriceStrategy):
-        """Initialize a new movie."""
-        self.title = title
-        self.price_strategy = price_strategy
+    def is_genre(self, genre_name: str) -> bool:
+        """Check if the movie belongs to the specified genre."""
+        return genre_name.lower() in (g.lower() for g in self.genre)
 
     def get_title(self) -> str:
-        """Get the movie title."""
+        """Return the title of the movie."""
         return self.title
 
     def __str__(self) -> str:
-        return self.title
+        """Return a string representation of the movie."""
+        return f"{self.title} ({self.year})"

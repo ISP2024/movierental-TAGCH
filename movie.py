@@ -1,6 +1,7 @@
 from enum import Enum
 from dataclasses import dataclass
 from typing import Collection
+import datetime
 
 class PriceStrategy(Enum):
     REGULAR = 0
@@ -50,3 +51,16 @@ class Movie:
     def __str__(self) -> str:
         """Return a string representation of the movie."""
         return f"{self.title} ({self.year})"
+
+
+def price_code_for_movie(movie: Movie) -> PriceStrategy:
+    """Determine the price code for a given movie."""
+    current_year = datetime.datetime.now().year
+
+    if movie.year == current_year:
+        return PriceStrategy.NEW_RELEASE
+
+    if any(genre.lower() in ["children", "childrens"] for genre in movie.genre):
+        return PriceStrategy.CHILDRENS
+
+    return PriceStrategy.REGULAR
